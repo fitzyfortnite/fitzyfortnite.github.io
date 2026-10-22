@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escape From Granny Legal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* ── EDIT THESE THREE VALUES BEFORE PUBLISHING (also in the CFG object in the script) ── */
+:root{
+  --bg:#f6f1e7; --paper:#fffdf8; --fg:#231c17; --muted:#6d6158; --rule:#d9cdbb;
+  --gold:#9a7428; --blood:#8e1a17; --ph-bg:#fff0b8; --ph-fg:#5b4300; --chip:#ece3d3;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d0b0a; --paper:#151210; --fg:#ece3d3; --muted:#a5978a; --rule:#3a3029;
+  --gold:#c9a35a; --blood:#d0453f; --ph-bg:#4a3a10; --ph-fg:#ffe08a; --chip:#231d19; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0b0a; --paper:#151210; --fg:#ece3d3; --muted:#a5978a; --rule:#3a3029;
+  --gold:#c9a35a; --blood:#d0453f; --ph-bg:#4a3a10; --ph-fg:#ffe08a; --chip:#231d19; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.65 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:46rem;margin:0 auto;padding-block:40px 64px}
+header{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding-bottom:22px}
+.kicker{font:600 12px/1 "Source Sans 3",sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+.kicker::before,.kicker::after{content:"";width:46px;height:1px;background:var(--gold);opacity:.7}
+h1{font:700 clamp(40px,9vw,64px)/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.08em;margin:0;text-wrap:balance}
+h1 .drip{color:var(--blood)}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;border-block:1px solid var(--rule);padding-block:10px;margin-bottom:28px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+nav{display:flex;flex-wrap:wrap;gap:4px}
+nav a,.lang button{font:600 14px/1 "Source Sans 3",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:9px 12px;border-radius:999px;border:0;background:none;cursor:pointer}
+nav a[aria-current="page"],.lang button[aria-pressed="true"]{background:var(--chip);color:var(--fg)}
+.lang{display:flex;gap:2px}
+section[data-view]{display:none}
+section[data-view].on{display:block}
+h2{font:700 34px/1.15 "Cormorant Garamond",Georgia,serif;margin:0 0 4px;text-wrap:balance}
+.eff{color:var(--muted);font-size:14px;margin:0 0 22px}
+h3{font:700 22px/1.25 "Cormorant Garamond",Georgia,serif;margin:30px 0 6px;color:var(--fg)}
+p,li{max-width:65ch}
+ul{padding-left:1.2em}
+li{margin:.25em 0}
+a{color:var(--gold)}
+.tldr{background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--gold);border-radius:6px;padding:14px 18px;margin:0 0 8px}
+.tldr strong{font-weight:600}
+.ph{background:var(--ph-bg);color:var(--ph-fg);padding:0 .3em;border-radius:3px;font-weight:600}
+.warn{border-left-color:var(--blood)}
+.mail{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mail button{font:600 13px/1 "Source Sans 3",sans-serif;border:1px solid var(--rule);background:var(--paper);color:var(--fg);border-radius:6px;padding:7px 10px;cursor:pointer}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--rule);color:var(--muted);font-size:14px;text-align:center}
+[lang-only]{display:none}
+html[data-l="en"] [lang-only="en"],html[data-l="tr"] [lang-only="tr"]{display:block}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="kicker">Escape from</div>
+    <h1>GRANNY</h1>
+  </header>
+
+  <div class="bar">
+    <nav aria-label="Pages">
+      <a href="#privacy" data-go="privacy"></a>
+      <a href="#terms" data-go="terms"></a>
+      <a href="#support" data-go="support"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en">EN</button><button data-lang="tr">TR</button>
+    </div>
+  </div>
+
+  <!-- ===================== PRIVACY ===================== -->
+  <section data-view="privacy">
+    <div lang-only="en">
+      <h2>Privacy Policy</h2>
+      <p class="eff">Effective <span data-cfg="effective"></span></p>
+      <div class="tldr"><strong>In short:</strong> Escape From Granny has no accounts and no servers of ours. Your progress and settings stay on your device. The free version shows ads from Google AdMob, which may use your device's advertising ID — only as described below and, where the law requires it, only with your consent.</div>
+
+      <h3>1. Who we are</h3>
+      <p>This policy covers the mobile game <em>Escape From Granny</em> (“the Game”), published by <span data-cfg="studio"></span> (“we”, “us”). If you have a question about privacy, write to <span data-cfg="email"></span>.</p>
+
+      <h3>2. Information we keep on your device</h3>
+      <p>The Game saves your progress (floors reached, notes found, achievements, lives), your settings (language, sound, graphics, frame rate) and whether you own “Remove ads”. This is stored only in the Game's local storage on your device. We never receive it. Uninstalling the Game deletes it.</p>
+
+      <h3>3. Advertising (Google AdMob)</h3>
+      <p>If you have not removed ads, the Game shows interstitial and optional rewarded video ads from Google AdMob. To show, measure and limit ads and to prevent fraud, Google may collect:</p>
+      <ul>
+        <li>your device's advertising identifier (Android Advertising ID or Apple IDFA, if you allow it);</li>
+        <li>IP address and the approximate location derived from it;</li>
+        <li>device and app information (model, operating system, language, app version);</li>
+        <li>how you interact with ads (views, taps).</li>
+      </ul>
+      <p><strong>Your choices.</strong> In the EEA, the UK and Switzerland the Game shows Google's consent form before any ad is requested; you can change your answer at any time in <em>Settings → Privacy choices</em>. On iPhone and iPad the system asks whether the Game may track you; if you decline, your IDFA is not shared. You can also reset or delete your advertising ID, or opt out of personalized ads, in your device settings. Without consent, ads are non-personalized.</p>
+      <p>Google processes this data under its own policies: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from apps that use its services</a>.</p>
+
+      <h3>4. Purchases</h3>
+      <p>“Remove ads” (a monthly subscription or a one-time lifetime unlock) is sold through the Apple App Store or Google Play. They handle payment; we never see your name, card or billing details. The Game only receives a confirmation that you own the item, so it can turn ads off and restore your purchase.</p>
+
+      <h3>5. Achievements</h3>
+      <p>If you are signed in to Apple Game Center or Google Play Games, the Game reports unlocked achievements to that service. This is governed by Apple's or Google's privacy policy.</p>
+
+      <h3>6. Children</h3>
+      <p>The Game contains horror themes and is not directed to children under 13. We do not knowingly collect personal information from children. If you believe a child has used the Game in a way that shared their data, contact us and we will help.</p>
+
+      <h3>7. Your rights</h3>
+      <p>Depending on where you live (for example under the GDPR, the UK GDPR, Türkiye's KVKK or the CCPA/CPRA), you may have the right to access, correct, delete or object to the processing of your personal data, and to withdraw consent. Because we do not hold personal data ourselves, the fastest way is to use the in-game Privacy choices, your device's ad settings, or Google's tools. You can always contact us and we will respond within 30 days. You may also complain to your local data-protection authority.</p>
+
+      <h3>8. Retention and security</h3>
+      <p>Data on your device stays until you uninstall the Game. Data collected by Google is kept according to Google's retention policy. The Game sends no data to us, so there is nothing for us to store or breach.</p>
+
+      <h3>9. Changes</h3>
+      <p>If this policy changes, we will update the date above and, for important changes, tell you in the Game.</p>
+
+      <h3>10. Contact</h3>
+      <p class="mail"><span data-cfg="email"></span> <button type="button" data-copy="email">Copy</button></p>
+      <p><span data-cfg="studio"></span>, <span data-cfg="address"></span></p>
+    </div>
+
+    <div lang-only="tr">
+      <h2>Gizlilik Politikası</h2>
+      <p class="eff">Yürürlük tarihi: <span data-cfg="effective_tr"></span></p>
+      <div class="tldr"><strong>Kısaca:</strong> Escape From Granny'de hesap yok ve bize ait bir sunucu yok. İlerlemen ve ayarların cihazında kalır. Ücretsiz sürümde Google AdMob reklamları gösterilir; Google, cihazının reklam kimliğini yalnızca aşağıda anlatıldığı şekilde ve yasanın gerektirdiği yerlerde yalnızca iznini alarak kullanabilir.</div>
+
+      <h3>1. Biz kimiz</h3>
+      <p>Bu politika, <span data-cfg="studio"></span> (“biz”) tarafından yayınlanan <em>Escape From Granny</em> mobil oyununu (“Oyun”) kapsar. Gizlilikle ilgili soruların için <span data-cfg="email"></span> adresine yazabilirsin.</p>
+
+      <h3>2. Cihazında tutulan bilgiler</h3>
+      <p>Oyun; ilerlemeni (ulaştığın katlar, bulduğun notlar, başarımlar, haklar), ayarlarını (dil, ses, grafik, kare hızı) ve “Reklamları kaldır”a sahip olup olmadığını kaydeder. Bunlar yalnızca cihazındaki yerel oyun kaydında tutulur, bize hiç gelmez. Oyunu silersen bu kayıt da silinir.</p>
+
+      <h3>3. Reklamlar (Google AdMob)</h3>
+      <p>Reklamları kaldırmadıysan Oyun, Google AdMob'dan geçiş reklamları ve isteğe bağlı ödüllü video reklamlar gösterir. Google; reklamları göstermek, ölçmek, sınırlamak ve sahtekârlığı önlemek için şunları toplayabilir:</p>
+      <ul>
+        <li>cihazının reklam kimliği (Android Reklam Kimliği ya da izin verirsen Apple IDFA);</li>
+        <li>IP adresi ve buradan çıkarılan yaklaşık konum;</li>
+        <li>cihaz ve uygulama bilgileri (model, işletim sistemi, dil, uygulama sürümü);</li>
+        <li>reklamlarla etkileşimin (görüntüleme, dokunma).</li>
+      </ul>
+      <p><strong>Seçimlerin.</strong> AEA, Birleşik Krallık ve İsviçre'de Oyun, herhangi bir reklam istenmeden önce Google'ın izin formunu gösterir; cevabını istediğin zaman <em>Ayarlar → Gizlilik tercihleri</em> bölümünden değiştirebilirsin. iPhone ve iPad'de sistem, Oyun'un seni takip edip edemeyeceğini sorar; reddedersen IDFA paylaşılmaz. Reklam kimliğini cihaz ayarlarından sıfırlayabilir, silebilir ya da kişiselleştirilmiş reklamları kapatabilirsin. İzin vermezsen reklamlar kişiselleştirilmez.</p>
+      <p>Google bu verileri kendi politikalarına göre işler: <a href="https://policies.google.com/privacy?hl=tr" target="_blank" rel="noopener">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/technologies/partner-sites?hl=tr" target="_blank" rel="noopener">Google, hizmetlerini kullanan uygulamalardan gelen bilgileri nasıl kullanır</a>.</p>
+
+      <h3>4. Satın alımlar</h3>
+      <p>“Reklamları kaldır” (aylık abonelik ya da tek seferlik ömür boyu kilit) Apple App Store veya Google Play üzerinden satılır. Ödemeyi onlar alır; adını, kartını ya da fatura bilgilerini hiçbir zaman görmeyiz. Oyun yalnızca ürüne sahip olduğuna dair bir onay alır; böylece reklamları kapatıp satın alımını geri yükleyebilir.</p>
+
+      <h3>5. Başarımlar</h3>
+      <p>Apple Game Center'a ya da Google Play Games'e giriş yaptıysan Oyun, açtığın başarımları o hizmete bildirir. Bu, Apple'ın ya da Google'ın gizlilik politikasına tabidir.</p>
+
+      <h3>6. Çocuklar</h3>
+      <p>Oyun korku temaları içerir ve 13 yaşından küçük çocuklara yönelik değildir. Çocuklardan bilerek kişisel bilgi toplamayız. Bir çocuğun verilerinin paylaşıldığını düşünüyorsan bize yaz, yardımcı olalım.</p>
+
+      <h3>7. Hakların</h3>
+      <p>Yaşadığın yere göre (örneğin KVKK, GDPR, UK GDPR veya CCPA/CPRA kapsamında) kişisel verilerine erişme, düzeltme, silme, işlenmesine itiraz etme ve iznini geri çekme hakların olabilir. Kişisel veriyi biz tutmadığımız için en hızlı yol; oyun içi Gizlilik tercihleri, cihazının reklam ayarları ya da Google'ın araçlarıdır. Bize her zaman yazabilirsin; 30 gün içinde yanıt veririz. Ayrıca Kişisel Verileri Koruma Kurumu'na ya da bulunduğun ülkenin veri koruma otoritesine başvurabilirsin.</p>
+
+      <h3>8. Saklama ve güvenlik</h3>
+      <p>Cihazındaki veriler, Oyun'u silene kadar kalır. Google'ın topladığı veriler Google'ın saklama politikasına göre tutulur. Oyun bize hiçbir veri göndermediği için bizim saklayacağımız ya da sızabilecek bir veri yoktur.</p>
+
+      <h3>9. Değişiklikler</h3>
+      <p>Bu politika değişirse yukarıdaki tarihi güncelleriz; önemli değişiklikleri Oyun içinde de bildiririz.</p>
+
+      <h3>10. İletişim</h3>
+      <p class="mail"><span data-cfg="email"></span> <button type="button" data-copy="email">Kopyala</button></p>
+      <p><span data-cfg="studio"></span>, <span data-cfg="address"></span></p>
+    </div>
+  </section>
+
+  <!-- ===================== TERMS ===================== -->
+  <section data-view="terms">
+    <div lang-only="en">
+      <h2>Terms of Use</h2>
+      <p class="eff">Effective <span data-cfg="effective"></span></p>
+      <div class="tldr warn"><strong>Content and health warning:</strong> the Game contains horror themes, blood, jump scares, flashing lights and screen-glitch effects. A small number of people may have seizures triggered by flashing lights. If you or your family have a history of epilepsy, consult a doctor before playing, and stop immediately if you feel unwell.</div>
+
+      <h3>1. Agreement</h3>
+      <p>By downloading or playing <em>Escape From Granny</em> you agree to these terms. If you got the Game from the Apple App Store, Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a> also applies; if anything here conflicts with it, Apple's agreement wins for App Store copies.</p>
+
+      <h3>2. Licence</h3>
+      <p>We give you a personal, non-exclusive, non-transferable, revocable licence to install and play the Game on devices you own or control, for non-commercial entertainment. You may not copy, modify, reverse-engineer, resell or redistribute the Game or its assets, or use cheats or tools that interfere with ads or purchases. Streaming and recording gameplay for videos is welcome.</p>
+
+      <h3>3. Remove ads: subscription and lifetime unlock</h3>
+      <ul>
+        <li><strong>Monthly subscription</strong> — removes ads for one month. Payment is charged to your Apple ID or Google Play account when you confirm the purchase. <strong>The subscription renews automatically</strong> at the same price unless you cancel it at least 24 hours before the end of the current period; your account is charged for renewal within the 24 hours before that period ends.</li>
+        <li><strong>How to cancel:</strong> iPhone/iPad — Settings → your name → Subscriptions. Android — Google Play → profile → Payments &amp; subscriptions → Subscriptions. Deleting the Game does not cancel a subscription.</li>
+        <li><strong>Lifetime unlock</strong> — a one-time purchase that removes ads permanently on the store account that bought it.</li>
+        <li>Prices are shown in the Game and the store before you buy, in your local currency. Use <em>Restore purchases</em> to get your purchase back on a new device.</li>
+        <li>Refunds are handled by Apple or Google under their policies.</li>
+        <li>Optional rewarded ads (for example an extra life) are always your choice.</li>
+      </ul>
+
+      <h3>4. Your data</h3>
+      <p>How the Game handles data is explained in our <a href="#privacy" data-go="privacy">Privacy Policy</a>. Progress is stored only on your device and can be lost if you uninstall the Game or reset your device; we cannot recover it.</p>
+
+      <h3>5. Updates and availability</h3>
+      <p>We may update, change or stop offering the Game or parts of it. Some updates may be required to keep playing.</p>
+
+      <h3>6. Disclaimer and liability</h3>
+      <p>The Game is provided “as is”. To the extent the law allows, we make no warranties and are not liable for indirect or consequential losses, and our total liability is limited to the amount you paid us in the last 12 months. Nothing here limits rights you have as a consumer that cannot be limited by law.</p>
+
+      <h3>7. Law</h3>
+      <p>These terms are governed by the laws of <span data-cfg="country"></span>, without affecting mandatory consumer protections of the country you live in.</p>
+
+      <h3>8. Contact</h3>
+      <p class="mail"><span data-cfg="email"></span> <button type="button" data-copy="email">Copy</button></p>
+    </div>
+
+    <div lang-only="tr">
+      <h2>Kullanım Koşulları</h2>
+      <p class="eff">Yürürlük tarihi: <span data-cfg="effective_tr"></span></p>
+      <div class="tldr warn"><strong>İçerik ve sağlık uyarısı:</strong> Oyun; korku temaları, kan, ani korkutmalar, yanıp sönen ışıklar ve ekran bozulma efektleri içerir. Az sayıda kişide yanıp sönen ışıklar nöbet tetikleyebilir. Sende ya da ailende epilepsi öyküsü varsa oynamadan önce bir doktora danış; kendini iyi hissetmezsen hemen bırak.</div>
+
+      <h3>1. Kabul</h3>
+      <p><em>Escape From Granny</em>'yi indirerek ya da oynayarak bu koşulları kabul etmiş olursun. Oyun'u Apple App Store'dan aldıysan Apple'ın <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Lisanslı Uygulama Son Kullanıcı Lisans Sözleşmesi</a> de geçerlidir; burada yazanlarla çelişirse App Store kopyaları için Apple'ın sözleşmesi esas alınır.</p>
+
+      <h3>2. Lisans</h3>
+      <p>Sana, sahip olduğun ya da kontrol ettiğin cihazlarda Oyun'u ticari olmayan eğlence amacıyla kurup oynaman için kişisel, münhasır olmayan, devredilemez ve geri alınabilir bir lisans veriyoruz. Oyun'u ya da varlıklarını kopyalayamaz, değiştiremez, tersine mühendislik yapamaz, satamaz ya da dağıtamazsın; reklamları veya satın alımları engelleyen hile ve araçlar kullanamazsın. Oynanışı yayınlamak ve video için kaydetmek serbesttir.</p>
+
+      <h3>3. Reklamları kaldır: abonelik ve ömür boyu kilit</h3>
+      <ul>
+        <li><strong>Aylık abonelik</strong>: Reklamları bir ay boyunca kaldırır. Satın almayı onayladığında ücret Apple Kimliğinden ya da Google Play hesabından alınır. <strong>Abonelik otomatik olarak yenilenir</strong>: Mevcut dönemin bitiminden en az 24 saat önce iptal etmezsen aynı fiyattan yenilenir. Yenileme ücreti, dönem bitmeden önceki 24 saat içinde hesabından alınır.</li>
+        <li><strong>Nasıl iptal edilir:</strong>
+          <ul>
+            <li>iPhone/iPad: Ayarlar → adın → Abonelikler.</li>
+            <li>Android: Google Play → profil → Ödemeler ve abonelikler → Abonelikler.</li>
+          </ul>
+          Oyun'u silmek aboneliği iptal etmez.</li>
+        <li><strong>Ömür boyu kilit</strong>: Tek seferlik bir satın alımdır. Onu alan mağaza hesabında reklamları kalıcı olarak kaldırır.</li>
+        <li>Fiyatlar, satın almadan önce Oyun'da ve mağazada yerel para biriminle gösterilir. Yeni bir cihazda satın alımını geri almak için <em>Satın alımları geri yükle</em>'yi kullan.</li>
+        <li>İadeleri Apple ya da Google kendi politikalarına göre yapar.</li>
+        <li>İsteğe bağlı ödüllü reklamlar (örneğin ekstra hak) her zaman senin tercihindir.</li>
+      </ul>
+
+      <h3>4. Verilerin</h3>
+      <p>Oyun'un verileri nasıl işlediği <a href="#privacy" data-go="privacy">Gizlilik Politikası</a>'nda anlatılır. İlerleme yalnızca cihazında saklanır. Oyun'u silersen ya da cihazını sıfırlarsan kaybolabilir ve biz geri getiremeyiz.</p>
+
+      <h3>5. Güncellemeler ve erişim</h3>
+      <p>Oyun'u ya da bir kısmını güncelleyebilir, değiştirebilir veya sunmayı bırakabiliriz. Oynamaya devam etmek için bazı güncellemeler gerekebilir.</p>
+
+      <h3>6. Sorumluluk reddi</h3>
+      <p>Oyun “olduğu gibi” sunulur. Yasanın izin verdiği ölçüde hiçbir garanti vermeyiz ve dolaylı ya da sonuç niteliğindeki zararlardan sorumlu değiliz. Toplam sorumluluğumuz, son 12 ayda bize ödediğin tutarla sınırlıdır. Bu koşullar, yasayla sınırlanamayan tüketici haklarını etkilemez.</p>
+
+      <h3>7. Uygulanacak hukuk</h3>
+      <p>Bu koşullar <span data-cfg="country_tr"></span> hukukuna tabidir. Yaşadığın ülkenin zorunlu tüketici koruma kuralları bundan etkilenmez.</p>
+
+      <h3>8. İletişim</h3>
+      <p class="mail"><span data-cfg="email"></span> <button type="button" data-copy="email">Kopyala</button></p>
+    </div>
+  </section>
+
+  <!-- ===================== SUPPORT ===================== -->
+  <section data-view="support">
+    <div lang-only="en">
+      <h2>Support</h2>
+      <p class="eff">We read every message, usually within two working days.</p>
+      <p class="mail"><strong>Email:</strong> <span data-cfg="email"></span> <button type="button" data-copy="email">Copy</button></p>
+      <p>Please include your device model, operating system version, the Game's version (Settings, at the bottom) and the floor you were on.</p>
+
+      <h3>I bought “Remove ads” but I still see ads</h3>
+      <p>Open the store panel from the main menu and tap <em>Restore purchases</em>. Make sure you are signed in with the same Apple ID or Google account you used to buy.</p>
+      <h3>How do I cancel the monthly subscription?</h3>
+      <p>iPhone/iPad: Settings → your name → Subscriptions. Android: Google Play → profile → Payments &amp; subscriptions → Subscriptions. Deleting the Game does not cancel it.</p>
+      <h3>How do I change my ad privacy choices?</h3>
+      <p>In the Game, open Settings → Privacy choices. On iOS you can also change tracking permission in Settings → Privacy &amp; Security → Tracking.</p>
+      <h3>I lost my progress</h3>
+      <p>Progress is saved only on your device. It is lost if the Game is uninstalled. Finished floors stay unlocked in <em>Floor select</em> as long as the Game is installed.</p>
+      <h3>I'm stuck on a floor</h3>
+      <p>Tap <em>Get a hint</em> under the objectives (available every 10 seconds) or open <em>Tasks</em> to see every task on the floor in order. Code doors show where their code is hidden.</p>
+    </div>
+    <div lang-only="tr">
+      <h2>Destek</h2>
+      <p class="eff">Her mesajı okuyoruz, genellikle iki iş günü içinde dönüyoruz.</p>
+      <p class="mail"><strong>E-posta:</strong> <span data-cfg="email"></span> <button type="button" data-copy="email">Kopyala</button></p>
+      <p>Lütfen şunları ekle: cihaz modelin, işletim sistemi sürümün, Oyun'un sürümü (Ayarlar'ın en altında yazar) ve hangi katta olduğun.</p>
+
+      <h3>“Reklamları kaldır”ı aldım ama hâlâ reklam görüyorum</h3>
+      <p>Ana menüden mağaza panelini aç ve <em>Satın alımları geri yükle</em>'ye dokun. Satın alırken kullandığın Apple Kimliği ya da Google hesabıyla giriş yaptığından emin ol.</p>
+      <h3>Aylık aboneliği nasıl iptal ederim?</h3>
+      <ul>
+        <li>iPhone/iPad: Ayarlar → adın → Abonelikler.</li>
+        <li>Android: Google Play → profil → Ödemeler ve abonelikler → Abonelikler.</li>
+      </ul>
+      <p>Oyun'u silmek aboneliği iptal etmez.</p>
+      <h3>Reklam gizlilik tercihlerimi nasıl değiştiririm?</h3>
+      <p>Oyun'da Ayarlar → Gizlilik tercihleri bölümünü aç. iOS'ta takip iznini Ayarlar → Gizlilik ve Güvenlik → Takip bölümünden de değiştirebilirsin.</p>
+      <h3>İlerlemem silindi</h3>
+      <p>İlerleme yalnızca cihazında saklanır ve Oyun silinirse kaybolur. Bitirdiğin katlar, Oyun yüklü kaldığı sürece <em>Kat seçimi</em>'nde açık kalır.</p>
+      <h3>Bir katta takıldım</h3>
+      <p>Görevlerin altındaki <em>İpucu al</em>'a dokun; 10 saniyede bir kullanılabilir. Ya da kattaki tüm görevleri sırasıyla görmek için <em>Görevler</em>'i aç. Şifreli kapılar, şifrenin nerede saklandığını gösterir.</p>
+    </div>
+  </section>
+
+  <footer><span data-cfg="studio"></span> · Escape From Granny</footer>
+</div>
+
+<script>
+/* ── EDIT BEFORE PUBLISHING ── */
+const CFG = {
+  studio:   "LYFE STUDIOS",
+  email:    "fitzypsn@gmail.com",
+  address:  "Türkiye",
+  country:  "the Republic of Türkiye",
+  country_tr: "Türkiye Cumhuriyeti",
+  effective: "22 October 2026",
+  effective_tr: "22 Ekim 2026"
+};
+
+const NAV = { en:{privacy:"Privacy",terms:"Terms",support:"Support"}, tr:{privacy:"Gizlilik",terms:"Koşullar",support:"Destek"} };
+const ALIAS = { gizlilik:["privacy","tr"], kosullar:["terms","tr"], destek:["support","tr"], "privacy-tr":["privacy","tr"], "terms-tr":["terms","tr"], "support-tr":["support","tr"] };
+
+document.querySelectorAll("[data-cfg]").forEach(el => {
+  const v = CFG[el.dataset.cfg] || "";
+  el.textContent = v;
+  if (/^\[.*\]$/.test(v)) el.classList.add("ph");
+});
+
+function setLang(l){
+  document.documentElement.dataset.l = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.querySelectorAll("nav a").forEach(a => a.textContent = NAV[l][a.dataset.go]);
+  try { localStorage.setItem("efg.legal.lang", l); } catch(e) {}
+}
+function show(v){
+  if (!NAV.en[v]) v = "privacy";
+  document.querySelectorAll("section[data-view]").forEach(s => s.classList.toggle("on", s.dataset.view === v));
+  document.querySelectorAll("nav a").forEach(a => { if (a.dataset.go === v) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+}
+function route(){
+  let h = (location.hash || "").slice(1).toLowerCase();
+  if (ALIAS[h]) { setLang(ALIAS[h][1]); h = ALIAS[h][0]; }
+  show(h);
+}
+let lang = "en";
+try { lang = localStorage.getItem("efg.legal.lang") || ((navigator.language||"").toLowerCase().startsWith("tr") ? "tr" : "en"); } catch(e) {}
+setLang(lang); route();
+window.addEventListener("hashchange", () => { route(); window.scrollTo(0,0); });
+document.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); show(a.dataset.go); try{history.replaceState(null,"","#"+a.dataset.go);}catch(_){} window.scrollTo(0,0); }));
+document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+  const t = CFG[b.dataset.copy], orig = b.textContent;
+  const done = () => { b.textContent = "✓"; setTimeout(() => b.textContent = orig, 1400); };
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(() => sel(b.previousElementSibling));
+  else sel(b.previousElementSibling);
+}));
+function sel(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+</script>
+
+</body>
+</html>
